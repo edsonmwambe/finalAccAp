@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "358965288203",
+    "firebase_url": "https://maid-finder-33aee.firebaseio.com",
+    "project_id": "maid-finder-33aee",
+    "storage_bucket": "maid-finder-33aee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358965288203:android:05fea7731d161ffa7f160e",
+        "android_client_info": {
+          "package_name": "com.example.myaccfinalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358965288203-f76ub4670ravsf3574ptk42oqoi8r16g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGxfLoc-wb0F08S3zvf1xpy6Sx7ict084"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358965288203-f76ub4670ravsf3574ptk42oqoi8r16g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
