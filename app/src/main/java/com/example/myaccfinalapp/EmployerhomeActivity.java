@@ -1,16 +1,21 @@
 package com.example.myaccfinalapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.myaccfinalapp.Model.Item;
 import com.example.myaccfinalapp.Model.Upload;
 import com.example.myaccfinalapp.Model.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +37,7 @@ public class EmployerhomeActivity extends AppCompatActivity {
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
     private ValueEventListener mDBListener;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -50,7 +56,10 @@ public class EmployerhomeActivity extends AppCompatActivity {
         dialog.setMessage("Please wait...");
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
+        firebaseAuth = FirebaseAuth.getInstance();
         dialog.show();
+
+        //test
         Upload p1 = new Upload("Amani Zaid", "edsonmwambe4@gmail.com", "0656288050","https://firebasestorage.googleapis.com/v0/b/maid-finder-33aee.appspot.com/o/uploads%2F1604413667202.jpg?alt=media&token=7b45c71a-db99-4dd7-97d6-8f488100627b",""+System.currentTimeMillis());
         Upload p2 = new Upload("Ally John", "edsonmwambe4@gmail.com", "0656288050","https://firebasestorage.googleapis.com/v0/b/maid-finder-33aee.appspot.com/o/uploads%2F1604413667202.jpg?alt=media&token=7b45c71a-db99-4dd7-97d6-8f488100627b",""+System.currentTimeMillis());
         Upload p3 = new Upload("Erick Seif", "edsonmwambe4@gmail.com", "0656288050","https://firebasestorage.googleapis.com/v0/b/maid-finder-33aee.appspot.com/o/uploads%2F1604413667202.jpg?alt=media&token=7b45c71a-db99-4dd7-97d6-8f488100627b",""+System.currentTimeMillis());
@@ -88,6 +97,31 @@ public class EmployerhomeActivity extends AppCompatActivity {
 
 
         mRecyclerPeople.setAdapter(adapter);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.employer_menu, menu);
+        return true;
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.log_out:{
+                LogOut();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void LogOut(){
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(EmployerhomeActivity.this, EmployerloginActivity.class));
 
     }
 }
