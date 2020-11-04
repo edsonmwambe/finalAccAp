@@ -58,6 +58,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email = mEmail.getText().toString();
                 String password = mPassword.getText().toString();
+
+                //test
+//                startActivity(new Intent(getApplicationContext(), MaidhomeActivity.class));
+
+                //Real
                 if(email.isEmpty()){
                     mEmail.setError("Enter email");
                 } else if(password.isEmpty()){
