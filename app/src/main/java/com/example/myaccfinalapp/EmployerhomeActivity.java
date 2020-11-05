@@ -12,21 +12,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.myaccfinalapp.Model.Item;
+import com.example.myaccfinalapp.Adapter.CustomAdapter;
 import com.example.myaccfinalapp.Model.Upload;
-import com.example.myaccfinalapp.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 public class EmployerhomeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerPeople;
@@ -113,6 +107,14 @@ public class EmployerhomeActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.log_out:{
                 LogOut();
+            }
+
+            case R.id.employer_profile:{
+                startActivity(new Intent(EmployerhomeActivity.this, EmployerprofileActivity.class));
+            }
+
+            case R.id.settings:{
+                Toast.makeText(EmployerhomeActivity.this, "Working on it", Toast.LENGTH_SHORT).show();
             }
         }
         return super.onOptionsItemSelected(item);

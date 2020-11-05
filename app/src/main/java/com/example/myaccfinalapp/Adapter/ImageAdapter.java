@@ -1,8 +1,7 @@
-package com.example.myaccfinalapp;
+package com.example.myaccfinalapp.Adapter;
 
 
 import android.content.Context;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myaccfinalapp.Model.Upload;
+import com.example.myaccfinalapp.R;
 
 import java.util.ArrayList;
 import java.util.List;

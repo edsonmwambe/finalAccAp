@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.myaccfinalapp.Adapter.MaidCustomAdapter;
 import com.example.myaccfinalapp.Model.Upload;
@@ -21,9 +23,9 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
-public class MaidhomeActivity extends AppCompatActivity {
+public class EmployerprofileActivity extends AppCompatActivity {
 
-//    private Button mLogout;
+    private Button mLogout;
     private RecyclerView mRecyclerView;
     private FirebaseAuth firebaseAuth;
     private ArrayList<Upload> data;
@@ -34,19 +36,16 @@ public class MaidhomeActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     private ValueEventListener mDBListener;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maidhome);
-//        getSupportActionBar().hide();
+        setContentView(R.layout.activity_employerprofile);
 
-//        mLogout= findViewById(R.id.btn_logout);
+
         firebaseAuth = FirebaseAuth.getInstance();
 
         data = new ArrayList();
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView = findViewById(R.id.recyclerViewEmployer);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MaidCustomAdapter(this, data);
@@ -64,23 +63,29 @@ public class MaidhomeActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         dialog.dismiss();
         mRecyclerView.setAdapter(adapter);
-
-
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.employer_menu, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.logOutmenu:{
+            case R.id.log_out:{
                 LogOut();
+            }
+
+            case R.id.employer_profile:{
+                startActivity(new Intent(EmployerprofileActivity.this, EmployerprofileActivity.class));
+            }
+
+            case R.id.settings:{
+                Toast.makeText(EmployerprofileActivity.this, "Working on it", Toast.LENGTH_SHORT).show();
             }
         }
         return super.onOptionsItemSelected(item);
@@ -89,7 +94,7 @@ public class MaidhomeActivity extends AppCompatActivity {
     private void LogOut(){
         firebaseAuth.signOut();
         finish();
-        startActivity(new Intent(MaidhomeActivity.this, LoginActivity.class));
+        startActivity(new Intent(EmployerprofileActivity.this, EmployerloginActivity.class));
 
     }
 }

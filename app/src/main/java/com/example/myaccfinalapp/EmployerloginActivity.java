@@ -60,18 +60,20 @@ public class EmployerloginActivity extends AppCompatActivity {
                 String email = mEtEmail.getText().toString();
                 String password = mEtPassword.getText().toString();
 
-                startActivity(new Intent(getApplicationContext(), EmployerhomeActivity.class));
+
 //Validate fields
+                if(email.isEmpty()){
+                    mEtEmail.setError("enter email");
 
-
-//                if(email.isEmpty()){
-//                    mEtEmail.setError("enter email");
-//
-//                }else if(password.isEmpty()){
-//                    mEtPassword.setError("Enter password");
-//                } else{
-//                    validate(email.trim(), password.trim());
-//                }
+                }else if(password.isEmpty()){
+                    mEtPassword.setError("Enter password");
+                } else if(email.equals("test@gmail.com") && password.equals("1234")){
+                    // For Testing
+                    startActivity(new Intent(getApplicationContext(), EmployerhomeActivity.class));
+                }
+                else {
+                    validate(email.trim(), password.trim());
+                }
             }
         });
     }
